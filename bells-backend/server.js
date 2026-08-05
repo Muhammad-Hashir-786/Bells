@@ -12,11 +12,24 @@ import productRoutes from "./routes/productRoutes.js";
 
 const app = express();
 
+// CORS_ORIGIN can be a single URL or a comma-separated list (e.g. for a
+// staging + production frontend). Falls back to the local Vite dev server
+// so `npm run dev` keeps working with no .env changes.
+const allowedOrigins = (process.env.CORS_ORIGIN || "http://localhost:5173")
+  .split(",")
+  .map((origin) => origin.trim());
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://localhost:5173",
+  origin: (origin, callback) => {
+    // Allow no-origin requests (curl, server-to-server, some mobile clients)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS: origin ${origin} not allowed`));
+    }
+  },
   credentials: true,
 }));
-
 app.use(cookieParser());
 app.use(express.json());        // ← must come BEFORE routes that read req.body
 app.use("/api/auth", authRoutes);

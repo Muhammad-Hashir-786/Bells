@@ -1,8 +1,8 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuth } from "../context/AuthContext.jsx";
+import { useAdminAuth } from "../context/AdminAuthContext.jsx";
 
 export default function ProtectedRoute() {
-  const { admin, loading } = useAuth();
+  const { admin, loading } = useAdminAuth();
 
   if (loading) {
     return (

@@ -1,10 +1,10 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { BellMark, IconPlus, IconUser } from "../Icons.jsx";
-import { useAuth } from "../../context/AuthContext.jsx";
+import { useAdminAuth } from "../../context/AdminAuthContext.jsx";
 import "./AdminLayout.css";
 
 export default function AdminLayout() {
-  const { admin, logout } = useAuth();
+  const { admin, logout } = useAdminAuth();
   const navigate = useNavigate();
 
   async function handleLogout() {

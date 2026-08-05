@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext.jsx";
+import { useAdminAuth } from "../../context/AdminAuthContext.jsx";
 import { BellMark } from "../../components/Icons.jsx";
 import "./admin.css";
 
@@ -9,7 +9,7 @@ export default function AdminLogin() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const { login } = useAuth();
+  const { login } = useAdminAuth();
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
