@@ -6,7 +6,7 @@ import { Product } from "../models/Product.js";
 import { seedProducts } from "./seedData.js";
 
 async function seed() {
-  const uri = process.env.MONGO_URI || "mongodb://localhost:27017/Bells";
+  const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/Bells";
   await mongoose.connect(uri);
   console.log("Connected to MongoDB, seeding...");
 
