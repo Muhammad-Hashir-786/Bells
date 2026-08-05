@@ -1,0 +1,85 @@
+.about-hero { padding: 64px 0 0; }
+
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.about-hero-grid p { color: var(--text-muted); font-size: 1.05rem; }
+
+.about-hero-grid img {
+  width: 100%;
+  aspect-ratio: 5 / 4.2;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.about-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.about-value { text-align: center; color: var(--navy); }
+.about-value svg { color: var(--accent); margin-bottom: 14px; }
+.about-value h3 { margin-bottom: 8px; font-size: 1.1rem; }
+.about-value p { color: var(--text-muted); font-size: 0.92rem; margin: 0; }
+
+.about-timeline-wrap .section-head { max-width: none; }
+
+.about-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+
+.about-timeline li {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 28px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.about-timeline-year {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent-600);
+}
+
+.about-timeline-text { color: var(--text-muted); max-width: 60ch; padding-top: 4px; }
+
+.about-makers-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.about-makers-grid img {
+  width: 100%;
+  aspect-ratio: 5 / 4.2;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.about-makers-grid p { color: var(--text-muted); margin-bottom: 24px; }
+
+.about-cta { background: var(--navy); text-align: center; }
+.about-cta-inner { max-width: 480px; margin: 0 auto; }
+.about-cta h2 { color: var(--text-on-navy); }
+.about-cta p { color: var(--text-on-navy-muted); margin-bottom: 26px; }
+
+@media (max-width: 880px) {
+  .about-hero-grid,
+  .about-makers-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-makers-grid img { order: -1; }
+  .about-values { grid-template-columns: 1fr; gap: 40px; }
+  .about-timeline li { grid-template-columns: 1fr; gap: 6px; }
+}

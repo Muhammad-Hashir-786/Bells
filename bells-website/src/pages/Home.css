@@ -1,0 +1,342 @@
+/* HERO */
+/* HERO */
+.hero { padding: 64px 0 0; background: var(--bg); }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-copy h1 {
+  margin-bottom: 0.4em;
+  font-size: clamp(2.5rem, 4.4vw, 3.8rem);
+  line-height: 1.06;
+}
+
+.hero-lede {
+  font-size: 1.12rem;
+  color: var(--text-muted);
+  max-width: 480px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  margin: 28px 0 44px;
+  flex-wrap: wrap;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 36px;
+  margin: 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.hero-stats dt {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.hero-stats dd {
+  margin: 2px 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Asymmetric collage — two tall columns, each with a short tile stacked
+   below, echoing a maker's worktable rather than a single stock photo */
+.hero-collage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+
+.hero-collage-item {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.hero-collage-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-collage-item--tall { grid-row: span 2; aspect-ratio: 4 / 5.6; }
+.hero-collage-item:not(.hero-collage-item--tall) { aspect-ratio: 4 / 2.7; }
+
+/* Signature element — a small hang-tag, like a maker's own label pinned to
+   the piece. Rotated slightly so it reads as placed by hand, not aligned
+   by a grid. */
+.hang-tag {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-100);
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 14px 8px 10px;
+  border-radius: 3px 10px 10px 3px;
+  transform: rotate(-4deg);
+  box-shadow: var(--shadow-lift);
+}
+
+.hang-tag-hole {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1.5px solid var(--navy-100);
+  flex-shrink: 0;
+}
+
+@media (max-width: 980px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-collage { order: -1; }
+}
+
+@media (max-width: 560px) {
+  .hero-collage { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+}
+/* CATEGORY GRID */
+/* CATEGORY GRID */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.category-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+}
+
+/* Small index mark — the catalog reads as an ordered set of five
+   departments, so numbering here encodes something real rather than
+   decorating an arbitrary list. */
+.category-tile-index {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-on-navy);
+  background: rgba(11, 37, 69, 0.55);
+  backdrop-filter: blur(3px);
+  padding: 4px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+}
+
+.category-tile-media {
+  aspect-ratio: 3 / 3;
+  overflow: hidden;
+}
+
+.category-tile-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.category-tile:hover .category-tile-media img { transform: scale(1.06); }
+
+/* Label lives on solid ground, never on the photo — the one thing that
+   guarantees legibility no matter how bright or dark the image is. */
+.category-tile-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 16px 16px 18px;
+}
+
+.category-tile-label h3 { margin-bottom: 2px; font-size: 1.05rem; color: var(--navy); }
+.category-tile-label p { margin: 0; font-size: 0.8rem; color: var(--text-muted); }
+
+.category-tile-arrow {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: var(--accent-600);
+  transform: rotate(-90deg) translateX(0);
+  transition: transform 0.2s ease;
+}
+
+.category-tile:hover .category-tile-arrow {
+  transform: rotate(-90deg) translateX(3px);
+}
+
+/* PRODUCT GRID */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px 24px;
+}
+
+.section-cta {
+  text-align: center;
+  margin-top: 44px;
+}
+
+/* VALUE PROPS */
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.value-item {
+  text-align: center;
+  padding: 12px;
+  color: var(--navy);
+}
+
+.value-item svg { color: var(--accent); margin-bottom: 14px; }
+.value-item h3 { margin-bottom: 8px; font-size: 1.1rem; }
+.value-item p { color: var(--text-muted); font-size: 0.92rem; margin: 0; }
+
+/* SALE STRIP */
+.sale-strip {
+  background: var(--navy);
+  padding: 70px 0;
+}
+
+.sale-strip-inner {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 48px;
+
+  align-items: center;
+}
+
+.sale-strip-copy h2 {
+  color: var(--text-on-navy);
+  margin-bottom: 16px;
+}
+
+.sale-strip-copy p {
+  color: var(--text-on-navy-muted);
+  max-width: 380px;
+  line-height: 1.6;
+}
+
+/* PRODUCTS INSIDE SALE SECTION */
+.sale-strip-products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  background: transparent;
+}
+
+/* PRODUCT CARD */
+.sale-strip-products .product-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* CARD HOVER */
+.sale-strip-products .product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.14);
+}
+
+/* PRODUCT IMAGE */
+.sale-strip-products .product-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* PRODUCT TEXT */
+.sale-strip-products .product-card-name a,
+.sale-strip-products .product-card-category,
+.sale-strip-products .price-current {
+  color: var(--navy);
+}
+
+.sale-strip-products .price-was,
+.sale-strip-products .product-card-rating span {
+  color: var(--text-on-navy-muted);
+}
+
+/* TESTIMONIAL */
+.testimonial-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.testimonial-stars {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.testimonial blockquote {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.4;
+  margin: 0 0 18px;
+}
+
+.testimonial-attribution {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+@media (max-width: 980px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-media { order: -1; }
+  .category-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .value-grid { grid-template-columns: 1fr; gap: 40px; }
+  .sale-strip-inner { grid-template-columns: 1fr; }
+  .sale-strip-products { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .category-grid { grid-template-columns: 1fr 1fr; }
+  .product-grid { grid-template-columns: 1fr 1fr; }
+  .sale-strip-products { grid-template-columns: 1fr; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+}

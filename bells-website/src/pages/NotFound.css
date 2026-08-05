@@ -1,0 +1,15 @@
+.not-found {
+  text-align: center;
+  padding: 140px 20px;
+  color: var(--accent);
+}
+
+.not-found h1 { color: var(--navy); margin: 20px 0 8px; font-size: 1.9rem; }
+.not-found p { color: var(--text-muted); margin-bottom: 28px; }
+
+.not-found-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}

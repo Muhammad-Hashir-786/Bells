@@ -1,0 +1,208 @@
+/* ============================================================
+   Bells — Design tokens
+   ============================================================ */
+:root {
+  --bg: #FFFFFF;
+  --surface: #F5F6F8;
+  --surface-2: #EEF0F3;
+  --border: #E2E5E9;
+
+  --navy: #0B2545;
+  --navy-700: #123163;
+  --navy-100: #E8EDF5;
+
+  --accent: #FF9900;
+  --accent-600: #E68600;
+  --accent-100: #FFF1DB;
+
+  --sale: #DC3545;
+  --sale-100: #FBE3E6;
+
+  --text: #212529;
+  --text-muted: #5B6472;
+  --text-on-navy: #F4F6FA;
+  --text-on-navy-muted: #AEB9CC;
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --container: 1200px;
+  --radius-sm: 3px;
+  --radius-md: 6px;
+
+  --shadow-card: 0 1px 2px rgba(11, 37, 69, 0.06), 0 4px 16px rgba(11, 37, 69, 0.06);
+  --shadow-lift: 0 12px 32px rgba(11, 37, 69, 0.14);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.12;
+  margin: 0 0 0.5em;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2.25rem, 4vw, 3.4rem); font-weight: 600; }
+h2 { font-size: clamp(1.7rem, 2.6vw, 2.35rem); }
+h3 { font-size: 1.3rem; }
+
+p { margin: 0 0 1em; color: var(--text); }
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+button { font-family: var(--font-body); cursor: pointer; }
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-600);
+  margin-bottom: 0.9em;
+}
+
+.section { padding: 88px 0; }
+.section--tight { padding: 56px 0; }
+.section--surface { background: var(--surface); }
+
+.section-head { max-width: 620px; margin-bottom: 48px; }
+.section-head--center { margin-left: auto; margin-right: auto; text-align: center; }
+.section-head p { color: var(--text-muted); font-size: 1.05rem; }
+
+/* Signature ring / bell-wave mark: concentric arcs radiating outward,
+   echoing the sound of a bell — used sparingly above key section titles */
+.ring-mark { width: 46px; height: 24px; margin-bottom: 18px; color: var(--accent); }
+.ring-mark--center { margin-left: auto; margin-right: auto; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 13px 26px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn--primary { background: var(--accent); color: var(--navy); }
+.btn--primary:hover { background: var(--accent-600); box-shadow: 0 6px 18px rgba(255, 153, 0, 0.35); }
+
+.btn--navy { background: var(--navy); color: var(--text-on-navy); }
+.btn--navy:hover { background: var(--navy-700); }
+
+.btn--outline { background: transparent; border-color: var(--navy); color: var(--navy); }
+.btn--outline:hover { background: var(--navy); color: var(--text-on-navy); }
+
+.btn--outline-light { background: transparent; border-color: rgba(244, 246, 250, 0.5); color: var(--text-on-navy); }
+.btn--outline-light:hover { background: rgba(244, 246, 250, 0.12); border-color: var(--text-on-navy); }
+
+.btn--block { width: 100%; }
+.btn--sm { padding: 9px 16px; font-size: 0.85rem; }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* Badges */
+.badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 5px 9px;
+  border-radius: 3px;
+}
+.badge--sale { background: var(--sale); color: #FFFFFF; }
+.badge--new { background: var(--navy); color: var(--text-on-navy); }
+.badge--stock { background: var(--surface-2); color: var(--text-muted); }
+
+/* Shared form styling (Contact page, etc.) */
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+.field label { font-size: 0.82rem; font-weight: 600; color: var(--navy); }
+
+.field input, .field textarea, .field select {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #FFFFFF;
+  color: var(--text);
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+.field textarea { resize: vertical; min-height: 130px; }
+
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+@media (max-width: 640px) {
+  .field-row { grid-template-columns: 1fr; }
+  .section { padding: 56px 0; }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
