@@ -13,7 +13,7 @@ import productRoutes from "./routes/productRoutes.js";
 const app = express();
 
 app.use(cors({
-  origin: ["http://localhost:5173", "https://bells-beta.vercel.app"],
+  origin: "https://bells-beta.vercel.app",
   credentials: true,
 }));
 
